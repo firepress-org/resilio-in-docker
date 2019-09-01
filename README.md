@@ -96,6 +96,49 @@ docker run -d `
   "$IMG_resilio"; echo;
 ```
 
+### Production ready example using docker service on Swarm
+
+```
+# node 1
+docker service create \
+  --name ${CTN_resilio1} --hostname ${CTN_resilio1} \
+  --network ${NTW_RESILIO} --replicas "1" \
+  --restart-condition "any" --restart-max-attempts "20" \
+  --reserve-memory "192M" --limit-memory "512M" \
+  --limit-cpu "0.333" \
+  --constraint 'node.labels.nodeid == 1' \
+  --publish "33331:33333" \
+  -e RSLSYNC_SECRET=$(cat ${secret_token_path}) \
+  --mount type=bind,source=${LOCAL_STORAGE},target=/data \
+  ${IMG_resilio}
+
+# node 2
+docker service create \
+  --name ${CTN_resilio2} --hostname ${CTN_resilio2} \
+  --network ${NTW_RESILIO} --replicas "1" \
+  --restart-condition "any" --restart-max-attempts "20" \
+  --reserve-memory "192M" --limit-memory "512M" \
+  --limit-cpu "0.333" \
+  --constraint 'node.labels.nodeid == 2' \
+  --publish "33332:33333" \
+  -e RSLSYNC_SECRET=$(cat ${secret_token_path}) \
+  --mount type=bind,source=${LOCAL_STORAGE},target=/data \
+  ${IMG_resilio}
+
+# node 3
+docker service create \
+  --name ${CTN_resilio3} --hostname ${CTN_resilio3} \
+  --network ${NTW_RESILIO} --replicas "1" \
+  --restart-condition "any" --restart-max-attempts "20" \
+  --reserve-memory "192M" --limit-memory "512M" \
+  --limit-cpu "0.333" \
+  --constraint 'node.labels.nodeid == 3' \
+  --publish "33333:33333" \
+  -e RSLSYNC_SECRET=$(cat ${secret_token_path}) \
+  --mount type=bind,source=${LOCAL_STORAGE},target=/data \
+  ${IMG_resilio}
+```
+
 <br>
 
 &nbsp;
