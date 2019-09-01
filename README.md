@@ -1,19 +1,22 @@
 # [resilio-in-docker](https://github.com/firepress-org/resilio-in-docker)
 
-A docker image that features [Resilio Sync](https://www.resilio.com/connect/) is a fast, reliable, and simple file sync and share solution, powered by P2P technology.
+A slim docker image for **Resilio Sync** using best practices available.
 
 **It features**:
 
-- it builds **everyday** and on every commits
-- it builds from the **go sources**
+- it builds ** every day** and on every commits
 - it uses **multi-stage** build
-- it uses **alpine** as final image
-- it runs as **non-root**
-- the app runs under **tiny**
-- it push **four tags** to registry
+- it uses **alpine** in the final image
+- it pushes **four tags** to registry
 - it uses **Labels**
-- it compress the app with **UPX**
+- it compresses the app with **UPX**
 - the docker image's size (uncompressed) is ~~ **31MB**
+
+## About Resilio Sync
+
+[Resilio Sync](https://www.resilio.com/connect/) is a fast, reliable, and simple file sync and share solution, powered by a P2P technology.
+
+![loading](https://user-images.githubusercontent.com/6694151/64082499-f4e50800-ccdd-11e9-827c-66dfb380a321.gif)
 
 <br>
 
@@ -34,7 +37,7 @@ You should use **this tag format** `$VERSION_$DATE_$HASH-COMMIT` in production.
 devmtl/resilio:2.6.3_2019-09-01_16H28s32_399d1a6
 ```
 
-These tags are also available to quickly test stuff:
+These tags are also available to test stuff quickly:
 
 ```
 devmtl/resilio:2.6.3
