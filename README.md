@@ -4,13 +4,16 @@ A slim docker image for **Resilio Sync** using best practices available.
 
 **It features**:
 
-- it builds ** every day** and on every commits
-- it uses **multi-stage** build
-- it uses **alpine** in the final image
-- it pushes **four tags** to registry
-- it uses **Labels**
-- it compresses the app with **UPX**
-- the docker image's size (uncompressed) is ~~ **31MB**
+- A build ** every day** and on every commits
+- A **multi-stage** build
+- **tests** using docker-official tests
+- Vulnerability check using the **Aqua scanner**
+- Easy to read **logs** within the CI history
+- The push of **four tags** to registry
+- The compression of the app (**UPX**)
+- Detailed **Labels**
+- The **Alpine** image in the final image
+- A small foot print of about **31MB** (uncompressed)
 
 ## About Resilio Sync
 
