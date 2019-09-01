@@ -1,0 +1,178 @@
+#
+# library file for backup
+#
+# (c) 2016 nimmis <kjell.havneskold@gmail.com>
+#
+
+#
+# additional information in help
+#
+
+#
+# show help text for extra commands in this lib
+#
+
+alt_help() {
+  echo "list                   list current directories"
+  echo "add <src>              add directory to backup"
+  echo "remove <src>           remove directory from backup"
+}
+
+#
+# add config settings for this command
+#
+
+extra_config_params() {
+
+  # set backup_dirs empty
+  set_def_params_in_config ${CONF_DIR}/${cmdname}.conf backup_dirs '#'
+
+}
+
+#
+# list all sources
+#
+
+show_dir() {
+  if [ "${backup_dirs}" == "#" ]; then
+    echo "no sources defined"
+    exit 1
+  fi
+  for source_dir in `dir_to_list`                                          
+  do                                                                       
+    dir_size=`du -hs ${source_dir} | awk '{print $1}'`                     
+    printf "backup of %s, estimated size %s\n" ${source_dir} "${dir_size}B"
+  done   
+}
+
+#
+# remove source from list
+#
+
+remove_dir() {
+
+  # 'all' means remove all directories"
+  if [ "${1}" == "all" ]; then
+    echo "Remove all directories"                                          
+    set_params_in_config ${CONF_DIR}/${cmdname}.conf backup_dirs '#'
+    exit 0                                                                 
+  fi
+
+  # check to see if source is present
+  if echo ${backup_dirs} | grep -q "#${1}#" ; then
+    echo "removning source ${1}"
+    # fix all / to \/ for sed
+    remove_path=`echo ${1} | sed 's./.\\\\/.g'`
+    # remove defined path and save new value
+    set_params_in_config ${CONF_DIR}/${cmdname}.conf backup_dirs `echo ${backup_dirs} | sed "s/#${remove_path}#/#/g" | sed 's./.\\\\/.g'`
+  else
+    echo "directory not in source list"
+    exit 1
+  fi
+}
+
+#
+# add source from list
+#
+
+add_dir() {
+  # check to see if source is present
+  if echo ${backup_dirs} | grep -q "#${1}#" ; then
+    echo "source already exists"
+    exit 1
+  else 
+    # check that the directoy really exists and that it is absolute
+    if [ -d ${1} ] &&
+       echo ${1} | grep -q "^/" ; then
+       # add inte to source
+       set_params_in_config ${CONF_DIR}/${cmdname}.conf backup_dirs `echo "${backup_dirs}${1}#" | sed 's./.\\\\/.g'`
+    else
+       echo "source not a directory"
+       exit 1
+    fi
+  fi
+}
+
+#
+# define which commands that exists in alt_case
+#
+# define as #cmd#[cmd#]
+#
+
+alt_cmd="#list#remove#add#"
+
+#
+# additional commands in case
+#
+
+alt_case() {
+  
+  case ${1} in
+   list)
+     show_dir
+     ;;
+   remove)
+     remove_dir ${2}
+     ;;
+   add)
+     add_dir ${2}
+     ;;
+   esac
+}
+
+
+#
+# convert list to one directory per line
+#
+
+dir_to_list() {
+  if [ "${backup_dirs}" != "#" ]; then
+    echo ${backup_dirs} | sed "s/^#//" | sed "s/#$//" | sed "s/#/\n/g"
+  fi
+}
+
+#
+# make one backup
+#
+
+do_backup() {
+
+  if [ "${backup_dirs}" == "#" ]; then
+    echo "nothing to backup"
+    exit 1
+  fi
+
+  # create temp backup directory
+
+  tmp_dir=${tmp_base_dir}/${cmdname}
+  mkdir -p ${tmp_dir}
+
+  # get date for backupfiles
+  backup_date=`date +%Y_%m_%d_%H_%M`
+
+  # make back for each directory
+  for source_dir in `dir_to_list`
+  do
+    dir_size=`du -hs ${source_dir} | awk '{print $1}'`
+    printf "backup of %s, size %s" ${source_dir} "${dir_size}B"
+    # make dir to filename
+    dir_name=`echo ${source_dir} | sed "s/\//_/g"`
+    dir_file="${tmp_dir}/${cmdname}${dir_name}-${backup_date}.tar.bz2"
+    tar cfj ${dir_file} -C${source_dir} .
+    dir_size=`du -hs ${dir_file} | awk '{print $1}'`
+    printf " compressed %s\n" "${dir_size}B" 
+  done
+
+  # build single backup file from all
+
+  tar cf ${backup_dir}/${cmdname}-${backup_date}.tar -C${tmp_dir} .
+
+  #do safe remove
+  rm -f ${tmp_dir}/${cmdname}*.tar.bz2
+  rmdir ${tmp_dir}
+
+  # delet old achives
+
+  retention_backup
+}
+
