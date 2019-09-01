@@ -56,7 +56,7 @@ CTN_NAME="resilio"
 IMG_resilio="devmtl/resilio:2.6.3_2019-09-01_16H28s32_399d1a6"
 ```
 
-#### Simple run
+### Simple run
 
 ```
 docker run --rm \
@@ -67,7 +67,7 @@ docker run --rm \
 
 ```
 
-# Generate RSLSYNC_SECRET (on Node 1)
+### Generate RSLSYNC_SECRET (on Node 1)
 
 ```
 docker run -d \
@@ -77,7 +77,7 @@ docker run -d \
   ${IMG_resilio}
 ```
 
-#### Display RSLSYNC_SECRET
+### Display RSLSYNC_SECRET
 
 ```
 docker logs -f ${CTN_NAME};
