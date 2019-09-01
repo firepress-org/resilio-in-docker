@@ -67,7 +67,7 @@ docker run --rm \
 
 ```
 
-### Generate RSLSYNC_SECRET (on Node 1)
+### Generate RSLSYNC_SECRET from Node 1
 
 ```
 docker run -d \
@@ -83,16 +83,17 @@ docker run -d \
 docker logs -f ${CTN_NAME};
 ```
 
-### Join existing resilio cluster using RSLSYNC_SECRET on nodes 2, 3, N
+### Join existing resilio cluster using RSLSYNC_SECRET on Nodes 2, 3, N
 
 ```
 MY_TOKEN="AJR3101010010110101010101010KH"
 
-docker run -d --name "$CTN_NAME" \
--v $LOCAL_STORAGE:/data \
--p 33333:33333 \
--e RSLSYNC_SECRET="$MY_TOKEN" \
-"$IMG_resilio"; echo;
+docker run -d `
+  --name "$CTN_NAME" \
+  -v $LOCAL_STORAGE:/data \
+  -p 33333:33333 \
+  -e RSLSYNC_SECRET="$MY_TOKEN" \
+  "$IMG_resilio"; echo;
 ```
 
 <br>
