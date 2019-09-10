@@ -1,8 +1,10 @@
 ARG VERSION="2.6.3"
 ARG APP_NAME="resilio"
+ARG GIT_PROJECT_NAME="rclone-in-docker"
+
 ARG USER="root"
 ARG ALPINE_VERSION="3.10"
-ARG GIT_REPO_DOCKERFILE="https://github.com/firepress-org/resilio"
+ARG GIT_REPO_DOCKERFILE="null"
 ARG GIT_REPO_SOURCE="https://github.com/bt-sync/sync-docker/blob/master/Dockerfile"
 
 ARG BINARY_NAME="rslsync"
