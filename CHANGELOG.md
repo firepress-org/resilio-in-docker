@@ -12,23 +12,25 @@ Based on this [template](https://gist.github.com/pascalandy/af709db02d3fe132a3e6
 
 # Releases
 
+## 2.6.3-r1
+### ⚡️ Updates
+- 7d6e07b Major README update
+
 ## 2.6.3-r0
 ### ⚡️ Updates
 - 0383a37 Add README-related.md
 - be88b6f Major update to Github CI yaml files
 - 68af682 Add license
-- 093c482 Add CAHNGELOG.md
+- 093c482 Add CHANGELOG.md
 - 47c18b4 Add utility.sh v0.8.6
 - d0c3a3d Add default var required in Dockerfile
 - ee46806 Introduce a new var to fix logic where APP_NAME is not the same as the Github’s project
 - 2d0e23b Update README-CI.md
 - 7d2ff3e CI, Add readme-to-dockerhub and Slack notification
-- 339f07c Improve README
 - 0aff8c0 Init README
 - 92f11f4 Init CI docker_build_ci.yml
 - 6fa3af1 Init gitignore
 - d6c4ccc Init Dockerfile in 4 stages
 - d0bbfdc Init license GNU v3
-- c604b7d Init
 - 834a345 Init script required by the Dockerfile
 - 56835a3 Initial commit 
