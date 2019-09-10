@@ -439,6 +439,10 @@ Based on this [template](https://gist.github.com/pascalandy/af709db02d3fe132a3e6
 
 # Releases
 
+## 0.0.0
+### ⚡️ Updates
+- placeholder
+
 EOF
 }
 function add_dockerignore {
