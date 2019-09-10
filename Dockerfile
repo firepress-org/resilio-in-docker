@@ -1,12 +1,17 @@
+# Those are required by Github Action CI
 ARG VERSION="2.6.3"
 ARG APP_NAME="resilio"
-ARG GIT_PROJECT_NAME="rclone-in-docker"
-
-ARG USER="root"
+ARG GIT_PROJECT_NAME="resilio-in-docker"
+#
 ARG ALPINE_VERSION="3.10"
-ARG GIT_REPO_DOCKERFILE="null"
+ARG USER="root"
+#
+ARG DOCKERHUB_USER="devmtl"
+ARG GITHUB_USER="firepress"
+ARG GITHUB_ORG="firepress-org"
+ARG GITHUB_REGISTRY="registry"
+#
 ARG GIT_REPO_SOURCE="https://github.com/bt-sync/sync-docker/blob/master/Dockerfile"
-
 ARG BINARY_NAME="rslsync"
 ARG GLIBC_VERSION="2.30-r0"
 ARG ALPINE_GLIBC="alpine-glibc"
@@ -118,7 +123,6 @@ ARG BINARY_NAME
 
 ENV APP_NAME="${APP_NAME}"
 ENV VERSION="${VERSION}"
-ENV GIT_REPO_DOCKERFILE="${GIT_REPO_DOCKERFILE}"
 ENV ALPINE_VERSION="${ALPINE_VERSION}"
 
 ENV CREATED_DATE="$(date "+%Y-%m-%d_%HH%Ms%S")"
@@ -136,7 +140,6 @@ LABEL org.opencontainers.image.title="${APP_NAME}"                              
       org.opencontainers.image.authors="Pascal Andy https://firepress.org/en/contact/"          \
       org.opencontainers.image.created="${CREATED_DATE}"                                        \
       org.opencontainers.image.revision="${SOURCE_COMMIT}"                                      \
-      org.opencontainers.image.source="${GIT_REPO_DOCKERFILE}"                                  \
       org.opencontainers.image.licenses="GNUv3. See README.md"                                  \
       org.firepress.image.user="${USER}"                                                        \
       org.firepress.image.alpineversion="{ALPINE_VERSION}"                                      \
