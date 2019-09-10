@@ -31,4 +31,4 @@ Based on this [template](https://gist.github.com/pascalandy/af709db02d3fe132a3e6
 - d0bbfdc Init license GNU v3
 - c604b7d Init
 - 834a345 Init script required by the Dockerfile
-- 56835a3 Initial commit
+- 56835a3 Initial commit 
