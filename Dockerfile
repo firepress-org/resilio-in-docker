@@ -1,17 +1,28 @@
-# Those are required by Github Action CI
-ARG VERSION="2.6.3"
+###################################
+# REQUIRED for bashLaVa https://github.com/firepress-org/bashlava
+# REQUIRED for Github Action CI template https://github.com/firepress-org/ghostfire/tree/master/.github/workflows
+###################################
 ARG APP_NAME="resilio"
-ARG GIT_PROJECT_NAME="resilio-in-docker"
-#
-ARG ALPINE_VERSION="3.10"
-ARG USER="root"
-#
+ARG VERSION="2.6.4"
+ARG RELEASE="2.6.4"
+ARG GITHUB_USER="firepress-org"
+
+###################################
+# REQUIRED BY OUR GITHUB ACTION CI
+###################################
+ARG GIT_PROJECT_NAME="ghostfire"
 ARG DOCKERHUB_USER="devmtl"
-ARG GITHUB_USER="firepress"
 ARG GITHUB_ORG="firepress-org"
 ARG GITHUB_REGISTRY="registry"
-#
+
+ARG GIT_REPO_DOCKERFILE="https://github.com/firepress-org/resilio-in-docker"
 ARG GIT_REPO_SOURCE="https://github.com/bt-sync/sync-docker/blob/master/Dockerfile"
+
+###################################
+# Start you Dockerfile from here
+###################################
+ARG ALPINE_VERSION="3.11"
+ARG USER="root"
 ARG BINARY_NAME="rslsync"
 ARG GLIBC_VERSION="2.30-r0"
 ARG ALPINE_GLIBC="alpine-glibc"
