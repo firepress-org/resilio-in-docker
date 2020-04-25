@@ -12,6 +12,13 @@ Based on this [template](https://gist.github.com/pascalandy/af709db02d3fe132a3e6
 
 # Releases
 
+## 2.6.4 (2020-04-25)
+### ⚡️ Updates
+- [5f08690](https://github.com/firepress-org/resilio/commit/5f08690) 2.6.4
+
+### 🔍 Compare
+- ... with previous release: [ <> 2.6.4](https://github.com/firepress-org/resilio/compare/...2.6.4)
+
 ## 2.6.3-r1
 ### ⚡️ Updates
 - 7d6e07b Major README update
