@@ -3,8 +3,8 @@
 # REQUIRED for Github Action CI template https://github.com/firepress-org/ghostfire/tree/master/.github/workflows
 ###################################
 ARG APP_NAME="resilio"
-ARG VERSION="2.6.4"
-ARG RELEASE="2.6.4"
+ARG VERSION="2.7.1"
+ARG RELEASE="2.7.1"
 ARG GITHUB_USER="firepress-org"
 
 ###################################
@@ -21,10 +21,10 @@ ARG GIT_REPO_SOURCE="https://github.com/bt-sync/sync-docker/blob/master/Dockerfi
 ###################################
 # Start you Dockerfile from here
 ###################################
-ARG ALPINE_VERSION="3.11"
+ARG ALPINE_VERSION="3.12"
 ARG USER="root"
 ARG BINARY_NAME="rslsync"
-ARG GLIBC_VERSION="2.30-r0"
+ARG GLIBC_VERSION="2.31-r0"
 ARG ALPINE_GLIBC="alpine-glibc"
 ARG ALPINE_BASE="alpine-base"
 
@@ -49,7 +49,6 @@ RUN set -eux && echo "@community http://dl-4.alpinelinux.org/alpine/edge/communi
     apk add --no-cache ca-certificates rsyslog logrotate runit && \
     # Make info file about this build
     mkdir -p /etc/BUILDS/ && \
-    printf "Build of nimmis/alpine-micro:3.10, date: %s\n"  `date -u +"%Y-%m-%dT%H:%M:%SZ"` > /etc/BUILDS/alpine-micro && \
     # install extra from github, including replacement for process 0 (init)
     # add extra package for installation
     apk add curl && \
