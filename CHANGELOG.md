@@ -14,6 +14,15 @@ Based on this [template](https://gist.github.com/pascalandy/af709db02d3fe132a3e6
 
 ## 2.7.1 (2020-06-28)
 ### ⚡️ Updates
+- [e108019](https://github.com/firepress-org/resilio/commit/e108019) clean file
+- [0a3be61](https://github.com/firepress-org/resilio/commit/0a3be61) update changelog
+- [1cb5550](https://github.com/firepress-org/resilio/commit/1cb5550) updates 2.7.1
+
+### 🔍 Compare
+- ... with previous release: [ <> 2.7.1](https://github.com/firepress-org/resilio/compare/...2.7.1)
+
+## 2.7.1 (2020-06-28)
+### ⚡️ Updates
 - [1cb5550](https://github.com/firepress-org/resilio/commit/1cb5550) updates 2.7.1
 
 ### 🔍 Compare
