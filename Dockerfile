@@ -3,8 +3,8 @@
 # REQUIRED for Github Action CI template https://github.com/firepress-org/ghostfire/tree/master/.github/workflows
 ###################################
 ARG APP_NAME="resilio"
-ARG VERSION="2.7.1"
-ARG RELEASE="2.7.1"
+ARG VERSION="2.7.2"
+ARG RELEASE="2.7.2"
 ARG GITHUB_USER="firepress-org"
 
 ###################################
