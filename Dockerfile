@@ -24,7 +24,7 @@ ARG GIT_REPO_SOURCE="https://github.com/bt-sync/sync-docker/blob/master/Dockerfi
 ARG ALPINE_VERSION="3.12"
 ARG USER="root"
 ARG BINARY_NAME="rslsync"
-ARG GLIBC_VERSION="2.31-r0"
+ARG GLIBC_VERSION="2.32-r0"
 ARG ALPINE_GLIBC="alpine-glibc"
 ARG ALPINE_BASE="alpine-base"
 
@@ -110,6 +110,9 @@ RUN set -eux && apk --update --no-cache add \
     ca-certificates curl upx
 
 # Download app
+# https://help.resilio.com/hc/en-us/articles/206178924-Installing-Sync-package-on-Linux
+# https://download-cdn.resilio.com/2.7.2.1375/Debian/resilio-sync_2.7.2.1375-1_amd64.deb
+
 WORKDIR /tmp
 RUN set -eux && curl https://download-cdn.resilio.com/"${VERSION}"/linux-x64/resilio-sync_x64.tar.gz | tar xfz - && \
     mv "${BINARY_NAME}" /usr/local/bin && \
