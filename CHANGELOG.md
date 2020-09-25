@@ -12,6 +12,14 @@ Based on this [template](https://gist.github.com/pascalandy/af709db02d3fe132a3e6
 
 # Releases
 
+## 2.7.2 (2020-09-25)
+### ⚡️ Updates
+- [de892ba](https://github.com/firepress-org/resilio/commit/de892ba) GLIBC_VERSION=2.32-r0
+- [a35b969](https://github.com/firepress-org/resilio/commit/a35b969) Update resilio to version 2.7.2 /Dockerfile
+
+### 🔍 Compare
+- ... with previous release: [ <> 2.7.2](https://github.com/firepress-org/resilio/compare/...2.7.2)
+
 ## 2.7.1 (2020-06-28)
 ### ⚡️ Updates
 - [e108019](https://github.com/firepress-org/resilio/commit/e108019) clean file
