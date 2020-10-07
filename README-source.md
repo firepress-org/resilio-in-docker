@@ -56,6 +56,10 @@ to the docker start command
 
 ### RUNAS_USER
 
+- `RUNAS_UID`
+- `RUNAS_GID`
+- `RUNAS_GROUP`
+
 This variable (along with RUNAS_UID, RUNAS_GROUP and RUNAS_GID) provide a way to control which user will run Resilio Sync and own the synced files.
 Useful when dealing with shared volumes.
 
