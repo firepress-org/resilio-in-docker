@@ -4,7 +4,7 @@
 ###################################
 ARG APP_NAME="resilio"
 ARG VERSION="2.7.2"
-ARG RELEASE="2.7.2"
+ARG RELEASE="2.7.2-r2"
 ARG GITHUB_USER="firepress-org"
 
 ###################################
